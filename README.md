@@ -4,4 +4,4 @@ Perform easy operations on multiple selections like the Sublime Text command "Ar
 
 ## Features
 
-TODO: a nice gif
+![demo](demo/demo.gif)
