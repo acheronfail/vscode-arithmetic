@@ -1,0 +1,60 @@
+{
+  "name": "arithmetic",
+  "displayName": "Arithmetic",
+  "description": "Perform easy operations on multiple selections like Sublime Text",
+  "publisher": "acheronfail",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acheronfail/vscode-arithmetic"
+  },
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.47.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:arithmetic.performArithmetic"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "arithmetic.performArithmetic",
+        "title": "Arithmetic"
+      }
+    ],
+    "configuration": {
+      "title": "Arithmetic",
+      "properties": {
+        "arithmetic.numberOfItemsInPreview": {
+          "type": "number",
+          "default": 5,
+          "description": "The number of items to pre-calculate while performing arithmetic"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint src --ext ts",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.47.0",
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^13.11.0",
+    "eslint": "^6.8.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "glob": "^7.1.6",
+    "mocha": "^7.1.2",
+    "typescript": "^3.8.3",
+    "vscode-test": "^1.3.0"
+  }
+}
