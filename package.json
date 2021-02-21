@@ -3,6 +3,7 @@
   "displayName": "Arithmetic",
   "description": "Perform easy operations on multiple selections like Sublime Text",
   "publisher": "acheronfail",
+  "license": "SEE LICENSE IN LICENSE-MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/acheronfail/vscode-arithmetic"
