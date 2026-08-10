@@ -1,4 +1,8 @@
-import { TextEditor } from "vscode";
+import { Selection, TextEditor } from "vscode";
+
+export function sortSelections(selections: readonly Selection[]): Selection[] {
+  return [...selections].sort((a, b) => a.start.compareTo(b.start));
+}
 
 export function tryEval(expr: string) {
   try {
@@ -24,7 +28,7 @@ export function getArithmeticPreview(
   input: string,
   count: number
 ): string | undefined {
-  const selections = textEditor.selections.slice(0, count);
+  const selections = sortSelections(textEditor.selections).slice(0, count);
   try {
     const results = selections.map((sel, i) =>
       evalExpr(textEditor.document.getText(sel), i, input)

@@ -1,5 +1,10 @@
 import * as vscode from "vscode";
-import { getArithmeticPreview, evalExpr, tryEval } from "./eval";
+import {
+  getArithmeticPreview,
+  evalExpr,
+  sortSelections,
+  tryEval,
+} from "./eval";
 
 export class ArithmeticInput {
   private readonly inputBox: vscode.InputBox = vscode.window.createInputBox();
@@ -38,7 +43,8 @@ export class ArithmeticInput {
   };
 
   private onDidAccept = () => {
-    const { selections, document } = this.textEditor;
+    const { document } = this.textEditor;
+    const selections = sortSelections(this.textEditor.selections);
     this.textEditor.edit((editBuilder) => {
       for (let i = 0; i < selections.length; ++i) {
         editBuilder.replace(
@@ -52,7 +58,7 @@ export class ArithmeticInput {
   };
 
   private getInitialValue() {
-    const { selections } = this.textEditor;
+    const selections = sortSelections(this.textEditor.selections);
     if (selections.length === 1) {
       return this.textEditor.document.getText(selections[0]);
     } else if (selections[0].isEmpty) {
